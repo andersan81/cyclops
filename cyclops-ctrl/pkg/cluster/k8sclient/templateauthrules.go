@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
 )
 
 func (k *KubernetesClient) ListTemplateAuthRules() ([]cyclopsv1alpha1.TemplateAuthRule, error) {

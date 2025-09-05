@@ -4,16 +4,16 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/template"
 
 	"github.com/gin-gonic/gin"
 	json "github.com/json-iterator/go"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Templates struct {

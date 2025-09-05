@@ -10,7 +10,7 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 func (k *KubernetesClient) GetResourcesForRelease(releaseName string) ([]*dto.Resource, error) {

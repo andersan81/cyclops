@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Server struct {

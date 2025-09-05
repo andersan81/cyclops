@@ -11,7 +11,7 @@ import (
 	"helm.sh/helm/v3/pkg/chartutil"
 	"helm.sh/helm/v3/pkg/release"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
 )
 
 func MapHelmReleases(releases []*release.Release) ([]*models.HelmRelease, error) {

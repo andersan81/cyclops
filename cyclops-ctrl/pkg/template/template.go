@@ -2,18 +2,18 @@ package template
 
 import (
 	"fmt"
-	gitproviders2 "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template/gitproviders"
+	gitproviders2 "github.com/andersan81/cyclops/cyclops-ctrl/pkg/template/gitproviders"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/auth"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/auth"
 
 	"github.com/pkg/errors"
 
 	"github.com/dgraph-io/ristretto"
 	"helm.sh/helm/v3/pkg/registry"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 )
 
 type ITemplateRepo interface {

@@ -20,8 +20,8 @@ import (
 	"github.com/go-git/go-git/v5/storage/memory"
 	"sigs.k8s.io/yaml"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/auth"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/auth"
 )
 
 type WriteClient struct {

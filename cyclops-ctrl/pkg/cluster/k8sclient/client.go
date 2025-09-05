@@ -19,9 +19,9 @@ import (
 	"k8s.io/client-go/kubernetes"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1/client"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1/client"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 type KubernetesClient struct {

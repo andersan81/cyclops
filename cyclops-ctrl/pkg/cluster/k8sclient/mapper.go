@@ -8,7 +8,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 func (k *KubernetesClient) mapDeployment(group, version, kind, name, namespace string) (*dto.Deployment, error) {

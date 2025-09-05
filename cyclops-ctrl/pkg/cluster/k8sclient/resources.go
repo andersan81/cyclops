@@ -21,8 +21,8 @@ import (
 	"k8s.io/client-go/discovery"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 func (k *KubernetesClient) VersionInfo() (*version.Info, error) {

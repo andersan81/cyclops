@@ -9,10 +9,10 @@ import (
 	"helm.sh/helm/v3/pkg/chartutil"
 	"helm.sh/helm/v3/pkg/engine"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Renderer struct {
@@ -193,7 +193,7 @@ func evaluateDependencyCondition(condition string, values map[string]interface{}
 
 func mapTargetNamespace(namespace string) string {
 	if len(namespace) == 0 {
-		return "default"
+		return "vision"
 	}
 
 	return namespace

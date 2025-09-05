@@ -7,8 +7,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
 

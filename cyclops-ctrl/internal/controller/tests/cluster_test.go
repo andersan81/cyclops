@@ -17,9 +17,9 @@ import (
 	v12 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/controller"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/mocks"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/controller"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/mocks"
 )
 
 var _ = Describe("Cluster controller test", func() {

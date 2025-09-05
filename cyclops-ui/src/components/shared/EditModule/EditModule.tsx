@@ -485,7 +485,8 @@ export const EditModuleComponent = ({
         <Row gutter={[40, 0]}>
           <Col span={24}>
             <Title level={2}>
-              <span style={{ color: "#888" }}>Edit module</span> {moduleName}
+              <span style={{ color: "#888" }}>Edit Application</span>{" "}
+              {moduleName}
             </Title>
           </Col>
         </Row>
@@ -711,7 +712,7 @@ export const EditModuleComponent = ({
               onValuesChange={handleValuesChange}
             >
               <Divider orientation="left" orientationMargin="0">
-                Edit Module
+                Edit Application
               </Divider>
               {formLoading()}
             </Form>

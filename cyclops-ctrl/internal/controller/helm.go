@@ -5,16 +5,16 @@ import (
 	"net/http"
 	"sort"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/integrations/helm"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	helm2 "github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/integrations/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	helm2 "github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
 	json "github.com/json-iterator/go"
 	"helm.sh/helm/v3/pkg/chartutil"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 	"github.com/gin-gonic/gin"
 )
 

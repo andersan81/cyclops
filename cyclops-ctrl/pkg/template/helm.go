@@ -17,11 +17,158 @@ import (
 	"gopkg.in/yaml.v3"
 	helmchart "helm.sh/helm/v3/pkg/chart"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 )
+
+// extractPropertyOrder extracts property names from JSON schema in the order they appear
+func extractPropertyOrder(jsonBytes []byte) []string {
+	return extractPropertyOrderFromJSON(string(jsonBytes), "properties")
+}
+
+// extractPropertyOrderFromJSON extracts property names from a JSON string for a given properties key
+func extractPropertyOrderFromJSON(jsonStr, propertiesKey string) []string {
+	// Find the properties section
+	searchKey := `"` + propertiesKey + `"`
+	propertiesStart := strings.Index(jsonStr, searchKey)
+	if propertiesStart == -1 {
+		return nil
+	}
+
+	// Find the opening brace after "properties":
+	braceStart := strings.Index(jsonStr[propertiesStart:], "{")
+	if braceStart == -1 {
+		return nil
+	}
+	braceStart += propertiesStart
+
+	// Extract property names by finding quoted keys at the root level of properties
+	var order []string
+	remaining := jsonStr[braceStart+1:]
+	depth := 0
+	inString := false
+	escaped := false
+	i := 0
+
+	for i < len(remaining) {
+		char := remaining[i]
+
+		if escaped {
+			escaped = false
+			i++
+			continue
+		}
+
+		if char == '\\' {
+			escaped = true
+			i++
+			continue
+		}
+
+		if char == '"' {
+			inString = !inString
+			if inString && depth == 0 {
+				// Look for the end of this quoted string
+				start := i + 1
+				j := start
+				for j < len(remaining) && remaining[j] != '"' {
+					if remaining[j] == '\\' {
+						j++ // skip escaped character
+					}
+					j++
+				}
+				if j < len(remaining) {
+					propName := remaining[start:j]
+					// Check if this is followed by a colon (indicating it's a property key)
+					colonPos := j + 1
+					for colonPos < len(remaining) && (remaining[colonPos] == ' ' || remaining[colonPos] == '\t' || remaining[colonPos] == '\n') {
+						colonPos++
+					}
+					if colonPos < len(remaining) && remaining[colonPos] == ':' {
+						order = append(order, propName)
+					}
+				}
+			}
+			i++
+			continue
+		}
+
+		if !inString {
+			if char == '{' || char == '[' {
+				depth++
+			} else if char == '}' || char == ']' {
+				depth--
+				if depth < 0 {
+					break // End of properties object
+				}
+			}
+		}
+
+		i++
+	}
+
+	return order
+}
+
+// injectPropertyOrderRecursive recursively injects property order into schema and all nested schemas
+func injectPropertyOrderRecursive(schema *helm.Property, jsonBytes []byte) {
+	// Set the order for the current schema if it wasn't already specified
+	if len(schema.Order) == 0 {
+		propertyOrder := extractPropertyOrder(jsonBytes)
+		if len(propertyOrder) > 0 {
+			schema.Order = propertyOrder
+		}
+	}
+
+	// Recursively process nested properties
+	jsonStr := string(jsonBytes)
+	for propName, property := range schema.Properties {
+		if property.Type == "object" && len(property.Properties) > 0 {
+			// Find this property's definition in the JSON to extract its nested order
+			nestedOrder := findNestedPropertyOrder(jsonStr, propName)
+			if len(nestedOrder) > 0 && len(property.Order) == 0 {
+				// Update the property with the extracted order
+				updatedProperty := property
+				updatedProperty.Order = nestedOrder
+				schema.Properties[propName] = updatedProperty
+
+				// Recursively process this nested object
+				injectPropertyOrderRecursive(&updatedProperty, jsonBytes)
+			}
+		}
+	}
+}
+
+// findNestedPropertyOrder finds the property order for a nested object property
+func findNestedPropertyOrder(jsonStr, propertyName string) []string {
+	// Find the property definition
+	propStart := strings.Index(jsonStr, `"`+propertyName+`"`)
+	if propStart == -1 {
+		return nil
+	}
+
+	// Find the opening brace of this property's object
+	remaining := jsonStr[propStart:]
+	bracePos := strings.Index(remaining, "{")
+	if bracePos == -1 {
+		return nil
+	}
+
+	// Find the "properties" key within this object
+	objectStart := propStart + bracePos
+	objectSection := jsonStr[objectStart:]
+
+	// Look for "properties" within this object
+	propertiesPos := strings.Index(objectSection, `"properties"`)
+	if propertiesPos == -1 {
+		return nil
+	}
+
+	// Extract from this specific properties section
+	return extractPropertyOrderFromJSON(objectSection[propertiesPos:], "properties")
+}
 
 func (r Repo) LoadHelmChart(repo, chart, version, resolvedVersion string) (*models.Template, error) {
 	var err error
@@ -193,6 +340,9 @@ func (r Repo) mapHelmChart(chartName string, files map[string][]byte) (*models.T
 			fmt.Println("error on schema bytes", chartName)
 			return &models.Template{}, err
 		}
+
+		// Inject property order recursively into the schema
+		injectPropertyOrderRecursive(&schema, schemaBytes)
 	}
 
 	var metadata *helm.Metadata

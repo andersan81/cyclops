@@ -162,7 +162,7 @@ const Modules = () => {
     }
 
     if (module.status === "progressing") {
-      return "#ffbf00";
+      return "#ff8803";
     }
 
     return "#FF0000";
@@ -221,14 +221,14 @@ const Modules = () => {
                   />
                 </Row>
                 <Row>
-                  <h3 style={{ margin: 0 }}>Add new module</h3>
+                  <h3 style={{ margin: 0 }}>Add new application</h3>
                 </Row>
               </Card>
             </a>
           </Col>
           <Empty
             image={Empty.PRESENTED_IMAGE_SIMPLE}
-            description="No Modules Found"
+            description="No Applications Found"
           ></Empty>
         </div>
       );
@@ -350,7 +350,7 @@ const Modules = () => {
               />
             </Row>
             <Row>
-              <h3>Add new module</h3>
+              <h3>Add new application</h3>
             </Row>
           </Card>
         </a>
@@ -389,7 +389,7 @@ const Modules = () => {
 
         <Row gutter={[16, 0]}>
           <Col span={18}>
-            <Title level={2}>Deployed modules</Title>
+            <Title level={2}>Deployed Applications</Title>
           </Col>
           <Col span={6}>
             <Button
@@ -401,7 +401,7 @@ const Modules = () => {
               }}
             >
               <PlusCircleOutlined />
-              Add module
+              Add application
             </Button>
           </Col>
         </Row>

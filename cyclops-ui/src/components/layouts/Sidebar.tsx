@@ -35,67 +35,66 @@ const SideNav = () => {
 
   const sidebarItems: MenuProps["items"] = [
     {
-      label: <a href={PathConstants.MODULES}>Modules</a>,
+      label: <Link to={PathConstants.MODULES}>Applications</Link>,
       icon: <AppstoreAddOutlined />,
       key: "modules",
     },
     {
-      label: <a href={PathConstants.TEMPLATES}>Templates</a>,
+      label: <Link to={PathConstants.TEMPLATES}>Templates</Link>,
       icon: <SnippetsOutlined />,
       key: "templates",
     },
-    {
-      label: <a href={PathConstants.NODES}>Nodes</a>,
-      icon: <HddOutlined />,
-      key: "nodes",
-    },
-    {
-      label: (
-        <a href={PathConstants.HELM_RELEASES}>
-          Helm releases <ThunderboltFilled style={{ color: "#ffcc66" }} />
-        </a>
-      ),
-      icon: <img alt="" style={{ height: "14px" }} src={helmLogo} />,
-      key: "helm",
-    },
-    {
-      label: "Addons",
-      icon: <ApiOutlined />,
-      key: "addons",
-      children: [
-        {
-          icon: <RobotOutlined />,
-          label: <a href={PathConstants.ADDONS_MCP_SERVER}>MCP server</a>,
-          key: "addons-mcp",
-        },
-      ],
-    },
+    // {
+    //   label: <Link to={PathConstants.NODES}>Nodes</Link>,
+    //   icon: <HddOutlined />,
+    //   key: "nodes",
+    // },
+    // {
+    //   label: (
+    //     <Link to={PathConstants.HELM_RELEASES}>
+    //       Helm releases <ThunderboltFilled style={{ color: "#ffcc66" }} />
+    //     </Link>
+    //   ),
+    //   icon: <img alt="" style={{ height: "14px" }} src={helmLogo} />,
+    //   key: "helm",
+    // },
+    // {
+    //   label: "Addons",
+    //   icon: <ApiOutlined />,
+    //   key: "addons",
+    //   children: [
+    //     {
+    //       icon: <RobotOutlined />,
+    //       label: <Link to={PathConstants.ADDONS_MCP_SERVER}>MCP server</Link>,
+    //       key: "addons-mcp",
+    //     },
+    //   ],
+    // },
   ];
 
   const tagChangelogLink = (tag: string) => {
     if (tag === "v0.0.0") {
-      return "https://github.com/cyclops-ui/cyclops/releases";
+      return "https://github.com/andersan81/cyclops/releases";
     }
 
-    return "https://github.com/cyclops-ui/cyclops/releases/tag/" + tag;
+    return "https://github.com/andersan81/cyclops/releases/tag/" + tag;
   };
 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
-      <a href={PathConstants.MODULES}>
+      <Link to={PathConstants.MODULES}>
         <div
           style={{
             height: "32px",
-            width: "70%",
             margin: "0.9rem 1rem 0.6rem 2rem",
             display: "inline-flex",
           }}
         >
           <img src={cyclopsLogo} alt="Cyclops" />
         </div>
-      </a>
+      </Link>
       <Menu
         theme="dark"
         mode="inline"
@@ -108,13 +107,11 @@ const SideNav = () => {
         style={{ background: "transparent", margin: "auto 25px 12px 25px" }}
         icon={<BugFilled />}
         className={"reportbug"}
-        href={
-          "https://github.com/cyclops-ui/cyclops/issues/new?assignees=&labels=&projects=&template=bug_report.md&title="
-        }
+        href={`mailto:${window.__RUNTIME_CONFIG__.REACT_APP_SUPPORT_EMAIL}?subject=Vision Deployments Bug Report`}
       >
         <b>Report a Bug</b>
       </Button>
-      <center
+      {/* <center
         style={{
           color: "#FFF",
           margin: "12px",
@@ -129,20 +126,15 @@ const SideNav = () => {
         >
           <DiscordOutlined style={{ fontSize: "20px" }} /> Join Discord
         </Link>
-      </center>
+      </center> */}
       <center
         style={{
           color: "#FFF",
           marginBottom: "25px",
-          marginTop: "0",
+          marginTop: "12px",
         }}
       >
-        <Link
-          className={"taglink"}
-          to={tagChangelogLink(window.__RUNTIME_CONFIG__.REACT_APP_VERSION)}
-        >
-          <GithubFilled /> {window.__RUNTIME_CONFIG__.REACT_APP_VERSION}
-        </Link>
+        <span className={"taglink"}>v1.0.0</span>
       </center>
     </div>
   );

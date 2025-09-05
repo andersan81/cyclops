@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"k8s.io/apimachinery/pkg/api/errors"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Cluster struct {

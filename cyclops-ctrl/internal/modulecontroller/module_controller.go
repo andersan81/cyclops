@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
-	templaterepo "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template/render"
+	templaterepo "github.com/andersan81/cyclops/cyclops-ctrl/pkg/template"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/template/render"
 
 	"github.com/go-logr/logr"
 	"helm.sh/helm/v3/pkg/chart"
@@ -39,11 +39,11 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/prometheus"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/prometheus"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 // ModuleReconciler reconciles a Module object

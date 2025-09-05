@@ -5,8 +5,8 @@ package mocks
 import (
 	context "context"
 
-	dto "github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	k8sclient "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	dto "github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	k8sclient "github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 
 	mock "github.com/stretchr/testify/mock"
 
@@ -18,7 +18,7 @@ import (
 
 	v1 "k8s.io/api/core/v1"
 
-	v1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
+	v1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
 
 	version "k8s.io/apimachinery/pkg/version"
 

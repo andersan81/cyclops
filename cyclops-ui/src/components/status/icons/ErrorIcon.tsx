@@ -1,4 +1,4 @@
-import { CloseSquareTwoTone } from "@ant-design/icons";
+import { ExclamationCircleTwoTone } from "@ant-design/icons";
 import React, { CSSProperties } from "react";
 import { useTheme } from "../../theme/ThemeContext";
 
@@ -10,9 +10,9 @@ export function ErrorIcon({ style }: ErrorIconProps) {
   const { mode } = useTheme();
 
   return (
-    <CloseSquareTwoTone
+    <ExclamationCircleTwoTone
       style={style}
-      twoToneColor={mode === "light" ? "#ff0000" : ["#ff0000", "#3d0101"]}
+      twoToneColor={mode === "light" ? "#ffcc00" : ["#ffcc00", "#4f4002"]}
     />
   );
 }

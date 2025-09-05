@@ -8,19 +8,19 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/mocks"
+	"github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/mocks"
 	"github.com/gin-gonic/gin"
 	json "github.com/json-iterator/go"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/controller"
-	k8smocks "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/mocks"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/controller"
+	k8smocks "github.com/andersan81/cyclops/cyclops-ctrl/pkg/mocks"
 )
 
 var _ = Describe("Templates controller test", func() {

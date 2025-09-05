@@ -57,12 +57,7 @@ export const SelectInputField = ({
       }
     >
       <Select
-        showSearch
         placeholder={field.name}
-        optionFilterProp="children"
-        filterOption={(input, option) =>
-          (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-        }
         options={selectOptions(field)}
         disabled={field.immutable && isModuleEdit}
       />

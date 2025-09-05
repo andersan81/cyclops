@@ -1,5 +1,9 @@
 .idea
 .DS_Store
+.env
+.env.local
+.env.production
+.env.development
 
 dist/
 cyclops-ui/src/**/*.js.map

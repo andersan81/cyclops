@@ -191,7 +191,7 @@ export const CreateModuleComponent = ({
     setLoadingSubmitCreate(true);
 
     const moduleName = values["cyclops_module_name"];
-    const moduleNamespace = values["cyclops_module_namespace"];
+    const moduleNamespace = "vision"; // Force all modules to deploy to vision namespace
 
     const gitopsWriteRepo = values["gitops-repo"];
     const gitopsWritePath = values["gitops-path"];
@@ -396,7 +396,7 @@ export const CreateModuleComponent = ({
     errors.errorFields.forEach(function (error: any) {
       let key = error.name.join(".");
       if (error.name.length === 1 && error.name[0] === "cyclops_module_name") {
-        key = "Module name";
+        key = "Application name";
       }
 
       errorMessages.push({
@@ -441,7 +441,7 @@ export const CreateModuleComponent = ({
         <Row gutter={[40, 0]}>
           <Col span={23}>
             <Title style={{ textAlign: "center" }} level={2}>
-              Define Module
+              Define Application
             </Title>
           </Col>
         </Row>
@@ -518,15 +518,19 @@ export const CreateModuleComponent = ({
               <Col style={{ padding: "0px" }} span={16}>
                 <div
                   style={{
-                    borderColor:
-                      themePalette === "light" ? "#c3c3c3" : "#707070",
-                    borderWidth: "1.5px",
-                    borderStyle: "solid",
-                    borderRadius: "7px",
+                    border:
+                      themePalette === "light"
+                        ? "1px solid #e8e8e8"
+                        : "1px solid #434343",
+                    borderRadius: "12px",
                     padding: "0px",
                     width: "100%",
                     backgroundColor:
-                      themePalette === "light" ? "#fafafa" : "#333",
+                      themePalette === "light" ? "#ffffff" : "#1f1f1f",
+                    boxShadow:
+                      themePalette === "light"
+                        ? "0 2px 8px rgba(0, 0, 0, 0.06)"
+                        : "0 2px 8px rgba(0, 0, 0, 0.25)",
                   }}
                 >
                   <Form.Item
@@ -534,9 +538,9 @@ export const CreateModuleComponent = ({
                     id="cyclops_module_name"
                     label={
                       <div>
-                        Module name
+                        Application name
                         <p style={{ color: "#8b8e91", marginBottom: "0px" }}>
-                          Enter a unique module name
+                          Enter a unique application name
                         </p>
                       </div>
                     }
@@ -544,17 +548,17 @@ export const CreateModuleComponent = ({
                     rules={[
                       {
                         required: true,
-                        message: "Module name is required",
+                        message: "Application name is required",
                       },
                       {
                         max: 63,
                         message:
-                          "Module name must contain no more than 63 characters",
+                          "Application name must contain no more than 63 characters",
                       },
                       {
                         pattern: /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/, // only alphanumeric characters and hyphens, cannot start or end with a hyphen and the alpha characters can only be lowercase
                         message:
-                          "Module name must follow the Kubernetes naming convention",
+                          "Application name must follow the Kubernetes naming convention",
                       },
                     ]}
                     hasFeedback={true}
@@ -568,29 +572,7 @@ export const CreateModuleComponent = ({
                     <Divider
                       style={{ marginTop: "12px", marginBottom: "12px" }}
                     />
-                    <Form.Item
-                      name="cyclops_module_namespace"
-                      id="cyclops_module_namespace"
-                      label={
-                        <div>
-                          Target namespace
-                          <p style={{ color: "#8b8e91", marginBottom: "0px" }}>
-                            Namespace used to deploy resources to
-                          </p>
-                        </div>
-                      }
-                      style={{ padding: "0px 12px 0px 12px" }}
-                      hasFeedback={true}
-                      validateDebounce={1000}
-                    >
-                      <Select showSearch={true} style={{ width: "100%" }}>
-                        {namespaces.map((namespace: string) => (
-                          <Option key={namespace} value={namespace}>
-                            {namespace}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
+                    {/* Target namespace field hidden - using default "vision" namespace */}
                   </div>
                   <div
                     style={{
@@ -672,7 +654,13 @@ export const CreateModuleComponent = ({
                     className={"expandadvanced"}
                     style={{
                       backgroundColor:
-                        themePalette === "light" ? "#eee" : "#595959",
+                        themePalette === "light" ? "#f7f8fa" : "#2a2a2a",
+                      borderTop:
+                        themePalette === "light"
+                          ? "1px solid #f0f0f0"
+                          : "1px solid #3a3a3a",
+                      borderRadius: "0 0 12px 12px",
+                      transition: "background-color 0.2s ease",
                     }}
                     onClick={toggleExpand}
                   >

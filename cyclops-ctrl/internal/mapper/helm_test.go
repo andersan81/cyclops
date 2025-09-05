@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 )
 
 var _ = Describe("Helm mapper test", func() {

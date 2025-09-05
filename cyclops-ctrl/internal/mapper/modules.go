@@ -3,14 +3,12 @@ package mapper
 import (
 	"strings"
 
-	v1 "k8s.io/api/core/v1"
-
 	json "github.com/json-iterator/go"
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 func RequestToModule(req dto.Module) (cyclopsv1alpha1.Module, error) {
@@ -115,7 +113,7 @@ func k8sTemplateRefToDTO(templateRef cyclopsv1alpha1.TemplateRef, templateResolv
 
 func mapTargetNamespace(targetNamespace string) string {
 	if len(strings.TrimSpace(targetNamespace)) == 0 {
-		return v1.NamespaceDefault
+		return "vision"
 	}
 
 	return targetNamespace

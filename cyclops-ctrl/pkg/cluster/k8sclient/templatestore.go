@@ -3,7 +3,7 @@ package k8sclient
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
 )
 
 func (k *KubernetesClient) GetTemplateStore(name string) (*cyclopsv1alpha1.TemplateStore, error) {

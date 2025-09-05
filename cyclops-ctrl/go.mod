@@ -1,8 +1,10 @@
-module github.com/cyclops-ui/cyclops/cyclops-ctrl
+module github.com/andersan81/cyclops/cyclops-ctrl
 
 go 1.22.0
 
 toolchain go1.22.5
+
+replace github.com/andersan81/cyclops/cyclops-ctrl => ../cyclops-ctrl
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
@@ -12,6 +14,7 @@ require (
 	github.com/go-git/go-git/v5 v5.11.0
 	github.com/go-logr/logr v1.4.1
 	github.com/google/uuid v1.6.0
+	github.com/gorilla/websocket v1.5.3
 	github.com/joho/godotenv v1.5.1
 	github.com/json-iterator/go v1.1.12
 	github.com/onsi/ginkgo/v2 v2.17.1
@@ -97,7 +100,6 @@ require (
 	github.com/google/pprof v0.0.0-20210720184732-4bb14d4b1be1 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/gosuri/uitable v0.0.4 // indirect
 	github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect

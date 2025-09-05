@@ -1,10 +1,10 @@
 package models
 
 import (
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 	"helm.sh/helm/v3/pkg/chart"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 type Template struct {

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: cyclops-ui
-          image: {{ printf "cyclopsui/cyclops-ui:%s" (default .Chart.AppVersion (.Values.image).tag) }}
+          image: {{ printf "ghcr.io/andersan81/cyclops-ui:%s" (default .Chart.AppVersion (.Values.image).tag) }}
           ports:
             - containerPort: 80
           env:

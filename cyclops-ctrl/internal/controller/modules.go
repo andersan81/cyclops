@@ -13,21 +13,21 @@ import (
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template/render"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/template"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/template/render"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/git"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/git"
 
 	"sigs.k8s.io/yaml"
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/prometheus"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/prometheus"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

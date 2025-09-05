@@ -3,18 +3,18 @@ package handler
 import (
 	"net/http"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/controller/sse"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/controller/ws"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/git"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/integrations/helm"
-	templaterepo "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template/render"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/controller/sse"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/controller/ws"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/git"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/integrations/helm"
+	templaterepo "github.com/andersan81/cyclops/cyclops-ctrl/pkg/template"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/template/render"
 	"github.com/gin-gonic/gin"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/controller"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/prometheus"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/telemetry"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/controller"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/prometheus"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/telemetry"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Handler struct {

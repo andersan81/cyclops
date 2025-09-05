@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/auth"
-	gitproviders2 "github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/template/gitproviders"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/auth"
+	gitproviders2 "github.com/andersan81/cyclops/cyclops-ctrl/pkg/template/gitproviders"
 
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
@@ -27,10 +27,10 @@ import (
 	"github.com/go-git/go-git/v5/storage/memory"
 	"helm.sh/helm/v3/pkg/chart"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/mapper"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/mapper"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 )
 
 func (r Repo) LoadTemplate(repoURL, path, commit, resolvedVersion string) (*models.Template, error) {

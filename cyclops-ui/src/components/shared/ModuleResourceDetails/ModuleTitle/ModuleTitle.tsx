@@ -52,7 +52,7 @@ const ModuleTitle = ({
           <></>
         )}
         <Title className="page-title" style={{ margin: 0 }}>
-          <Tooltip title={"Copy module name to clipboard"} trigger="hover">
+          <Tooltip title={"Copy application name to clipboard"} trigger="hover">
             <span
               onClick={() => navigator.clipboard.writeText(moduleName)}
               style={{ cursor: "pointer" }}

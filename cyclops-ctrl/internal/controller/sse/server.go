@@ -1,10 +1,10 @@
 package sse
 
 import (
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/integrations/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/integrations/helm"
 	"github.com/gin-gonic/gin"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
+	"github.com/andersan81/cyclops/cyclops-ctrl/pkg/cluster/k8sclient"
 )
 
 type Server struct {

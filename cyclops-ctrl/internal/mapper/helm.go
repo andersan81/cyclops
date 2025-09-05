@@ -4,8 +4,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/helm"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/helm"
 )
 
 func HelmSchemaToFields(name string, schema helm.Property, defs map[string]helm.Property, dependencies []*models.Template) models.Field {
@@ -128,10 +128,8 @@ func sortFields(fields []models.Field, order []string) []models.Field {
 		return ordersMap[orderedFields[i].Name] < ordersMap[orderedFields[j].Name]
 	})
 
-	// Sort fields without order alphabetically by name
-	sort.Slice(unorderedFields, func(i, j int) bool {
-		return unorderedFields[i].Name < unorderedFields[j].Name
-	})
+	// Keep fields without explicit order in their original order (don't sort alphabetically)
+	// The unorderedFields slice already maintains the original order from iteration
 
 	// Combine the ordered and unordered fields
 	sortedFields := append(orderedFields, unorderedFields...)

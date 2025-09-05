@@ -19,8 +19,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	yaml2 "k8s.io/apimachinery/pkg/util/yaml"
 
-	cyclopsv1alpha1 "github.com/cyclops-ui/cyclops/cyclops-ctrl/api/v1alpha1"
-	"github.com/cyclops-ui/cyclops/cyclops-ctrl/internal/models/dto"
+	cyclopsv1alpha1 "github.com/andersan81/cyclops/cyclops-ctrl/api/v1alpha1"
+	"github.com/andersan81/cyclops/cyclops-ctrl/internal/models/dto"
 )
 
 const (
