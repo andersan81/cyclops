@@ -22,14 +22,18 @@ print_warning() {
     echo -e "${YELLOW}[FRONTEND]${NC} $1"
 }
 
-# Check if we're in the right directory
-if [ ! -f "../cyclops-ui/package.json" ]; then
-    echo "Please run this script from the scripts directory in the cyclops project"
+# Find the project root directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Check if we found the correct project root
+if [ ! -f "$PROJECT_ROOT/cyclops-ui/package.json" ]; then
+    echo "Could not find cyclops project root. Make sure this script is in the scripts/ directory of the cyclops project."
     exit 1
 fi
 
 print_status "Starting Cyclops UI..."
-cd ../cyclops-ui
+cd "$PROJECT_ROOT/cyclops-ui"
 
 # Check environment file
 if [ ! -f ".env" ]; then

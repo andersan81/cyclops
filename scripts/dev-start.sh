@@ -29,19 +29,25 @@ print_error() {
     echo -e "${RED}[CYCLOPS DEV]${NC} $1"
 }
 
-# Check if we're in the right directory
-if [ ! -f "../cyclops-ctrl/Makefile" ] || [ ! -f "../cyclops-ui/package.json" ]; then
-    print_error "Please run this script from the scripts directory in the cyclops project"
+# Find the project root directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Check if we found the correct project root
+if [ ! -f "$PROJECT_ROOT/cyclops-ctrl/Makefile" ] || [ ! -f "$PROJECT_ROOT/cyclops-ui/package.json" ]; then
+    print_error "Could not find cyclops project root. Make sure this script is in the scripts/ directory of the cyclops project."
     exit 1
 fi
 
+print_status "Project root: $PROJECT_ROOT"
+
 # Check environment files
 print_status "Checking environment configuration..."
-if [ ! -f "../cyclops-ui/.env" ]; then
+if [ ! -f "$PROJECT_ROOT/cyclops-ui/.env" ]; then
     print_warning "No .env file found in cyclops-ui/"
-    if [ -f "../cyclops-ui/.env.template" ]; then
+    if [ -f "$PROJECT_ROOT/cyclops-ui/.env.template" ]; then
         print_status "Copying .env.template to .env"
-        cp ../cyclops-ui/.env.template ../cyclops-ui/.env
+        cp "$PROJECT_ROOT/cyclops-ui/.env.template" "$PROJECT_ROOT/cyclops-ui/.env"
         print_warning "Please review and update cyclops-ui/.env with your configuration"
     else
         print_error "No .env.template found in cyclops-ui/"
@@ -49,11 +55,11 @@ if [ ! -f "../cyclops-ui/.env" ]; then
     fi
 fi
 
-if [ ! -f "../cyclops-ctrl/.env" ]; then
+if [ ! -f "$PROJECT_ROOT/cyclops-ctrl/.env" ]; then
     print_warning "No .env file found in cyclops-ctrl/"
-    if [ -f "../cyclops-ctrl/.env.template" ]; then
+    if [ -f "$PROJECT_ROOT/cyclops-ctrl/.env.template" ]; then
         print_status "Copying .env.template to .env"
-        cp ../cyclops-ctrl/.env.template ../cyclops-ctrl/.env
+        cp "$PROJECT_ROOT/cyclops-ctrl/.env.template" "$PROJECT_ROOT/cyclops-ctrl/.env"
         print_warning "Please review and update cyclops-ctrl/.env with your configuration"
     fi
 fi
@@ -71,10 +77,10 @@ trap cleanup EXIT INT TERM
 
 # Start the backend controller
 print_status "Starting Cyclops Controller (Backend)..."
-cd ../cyclops-ctrl
+cd "$PROJECT_ROOT/cyclops-ctrl"
 make start &
 BACKEND_PID=$!
-cd ../scripts
+cd "$PROJECT_ROOT"
 
 # Wait a moment for the backend to start
 sleep 3
@@ -89,7 +95,7 @@ print_success "Backend started (PID: $BACKEND_PID)"
 
 # Start the UI server
 print_status "Starting Cyclops UI (Frontend)..."
-cd ../cyclops-ui
+cd "$PROJECT_ROOT/cyclops-ui"
 
 # Check if node_modules exists
 if [ ! -d "node_modules" ]; then
@@ -99,7 +105,7 @@ fi
 
 npm start &
 FRONTEND_PID=$!
-cd ../scripts
+cd "$PROJECT_ROOT"
 
 # Wait a moment for the frontend to start
 sleep 3

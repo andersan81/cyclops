@@ -29,11 +29,17 @@ print_error() {
 
 print_status "🔧 Setting up Cyclops development environment..."
 
-# Check if we're in the right directory
-if [ ! -f "../cyclops-ctrl/Makefile" ] || [ ! -f "../cyclops-ui/package.json" ]; then
-    print_error "Please run this script from the scripts directory in the cyclops project"
+# Find the project root directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Check if we found the correct project root
+if [ ! -f "$PROJECT_ROOT/cyclops-ctrl/Makefile" ] || [ ! -f "$PROJECT_ROOT/cyclops-ui/package.json" ]; then
+    print_error "Could not find cyclops project root. Make sure this script is in the scripts/ directory of the cyclops project."
     exit 1
 fi
+
+print_status "Project root: $PROJECT_ROOT"
 
 # Check Go installation
 print_status "Checking Go installation..."
@@ -66,7 +72,7 @@ print_success "npm $NPM_VERSION found"
 
 # Setup backend environment
 print_status "Setting up backend environment..."
-cd ../cyclops-ctrl
+cd "$PROJECT_ROOT/cyclops-ctrl"
 
 if [ ! -f ".env" ]; then
     if [ -f ".env.template" ]; then
@@ -85,11 +91,11 @@ print_status "Downloading Go dependencies..."
 go mod download
 print_success "Go dependencies downloaded"
 
-cd ../scripts
+cd "$PROJECT_ROOT"
 
 # Setup frontend environment
 print_status "Setting up frontend environment..."
-cd ../cyclops-ui
+cd "$PROJECT_ROOT/cyclops-ui"
 
 if [ ! -f ".env" ]; then
     if [ -f ".env.template" ]; then
@@ -108,26 +114,26 @@ print_status "Installing npm dependencies..."
 npm install
 print_success "npm dependencies installed"
 
-cd ../scripts
+cd "$PROJECT_ROOT"
 
 # Make scripts executable
 print_status "Making development scripts executable..."
-chmod +x dev-start.sh dev-backend.sh dev-frontend.sh dev-setup.sh
+chmod +x "$PROJECT_ROOT/scripts/dev-start.sh" "$PROJECT_ROOT/scripts/dev-backend.sh" "$PROJECT_ROOT/scripts/dev-frontend.sh" "$PROJECT_ROOT/scripts/dev-setup.sh"
 
 print_success "✅ Development environment setup complete!"
 print_status ""
 print_status "Available commands:"
-print_status "  ./dev-start.sh     - Start both backend and frontend"
-print_status "  ./dev-backend.sh   - Start only the backend controller"
-print_status "  ./dev-frontend.sh  - Start only the frontend UI"
+print_status "  ./scripts/dev-start.sh     - Start both backend and frontend"
+print_status "  ./scripts/dev-backend.sh   - Start only the backend controller"
+print_status "  ./scripts/dev-frontend.sh  - Start only the frontend UI"
 print_status ""
 print_status "Environment files created:"
-if [ -f "../cyclops-ctrl/.env" ]; then
+if [ -f "$PROJECT_ROOT/cyclops-ctrl/.env" ]; then
     print_status "  ✅ cyclops-ctrl/.env"
 else
     print_warning "  ❌ cyclops-ctrl/.env (missing)"
 fi
-if [ -f "../cyclops-ui/.env" ]; then
+if [ -f "$PROJECT_ROOT/cyclops-ui/.env" ]; then
     print_status "  ✅ cyclops-ui/.env"
 else
     print_warning "  ❌ cyclops-ui/.env (missing)"
