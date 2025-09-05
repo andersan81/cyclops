@@ -9,7 +9,9 @@
     "skipLibCheck": true, // Optional: Skip type checking of declaration files
     "moduleResolution": "node", // Use Node's module resolution strategy
     "allowSyntheticDefaultImports": true, // Helps with importing default exports
-    "sourceMap": true // Optional: Generate source maps
+    "sourceMap": true, // Optional: Generate source maps
+    "types": ["node", "react", "react-dom"], // Explicitly specify types to include
+    "lib": ["dom", "dom.iterable", "es6"] // Include DOM and ES6 libraries
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"], // Include your source files
   "exclude": ["node_modules"] // Exclude node_modules

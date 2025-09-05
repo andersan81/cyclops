@@ -3559,6 +3559,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/classnames@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.3.0.tgz"
+  integrity sha512-3GsbOoDYteFShlrBTKzI2Eii4vPg/jAf7LXRIn0WQePKlmhpkV0KoTMuawA7gZJkrbPrZGwv9IEAfIWaOaQK8w==
+  dependencies:
+    classnames "*"
+
 "@types/connect-history-api-fallback@^1.3.5":
   version "1.5.4"
   resolved "https://registry.npmjs.org/@types/connect-history-api-fallback/-/connect-history-api-fallback-1.5.4.tgz"
@@ -3755,7 +3762,7 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/mdx@^2.0.0":
+"@types/mdx@^2.0.0", "@types/mdx@^2.0.13":
   version "2.0.13"
   resolved "https://registry.npmjs.org/@types/mdx/-/mdx-2.0.13.tgz"
   integrity sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==
@@ -3906,7 +3913,7 @@
   dependencies:
     "@types/geojson" "*"
 
-"@types/testing-library__jest-dom@^5.9.1":
+"@types/testing-library__jest-dom@^5.14.9", "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.9"
   resolved "https://registry.npmjs.org/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.9.tgz"
   integrity sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==
@@ -5534,7 +5541,7 @@ clamp@^1.0.1:
   resolved "https://registry.npmjs.org/clamp/-/clamp-1.0.1.tgz"
   integrity sha512-kgMuFyE78OC6Dyu3Dy7vcx4uy97EIbVxJB/B0eJ3bUNAkwdNcxYzgKltnyADiYwsR7SEqkkUPsEUT//OVS6XMA==
 
-classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1, classnames@^2.3.2, classnames@^2.5.1, classnames@2.x:
+classnames@*, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1, classnames@^2.3.2, classnames@^2.5.1, classnames@2.x:
   version "2.5.1"
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
@@ -14006,9 +14013,7 @@ react-syntax-highlighter@^15.5.0:
     refractor "^3.6.0"
 
 react-terminal@^1.3.1:
-  version "1.4.4"
-  resolved "https://registry.npmjs.org/react-terminal/-/react-terminal-1.4.4.tgz"
-  integrity sha512-ro3jofMYh0579oJQbx4FeJ52aU7vzNazHOBPjP7WpOCn6dnQLzB4e3UOA1KZxZzV7LQl7Bn+lovC5LmJo7pa0g==
+  version "v1.4.4"
   dependencies:
     prop-types "^15.7.2"
     react-device-detect "2.1.2"
