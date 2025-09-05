@@ -54,15 +54,10 @@ const Modules = () => {
   useEffect(() => {
     setLoadingModules(true);
 
-    axios
-      .get(`/api/namespaces`)
-      .then((res) => {
-        setNamespaceFilterData(res.data);
-        setModuleNamespaceFilter(res.data);
-      })
-      .catch((error) => {
-        setError(mapResponseError(error));
-      });
+    // Only show "vision" namespace in filter since modules are created there
+    const visionNamespace = ["vision"];
+    setNamespaceFilterData(visionNamespace);
+    setModuleNamespaceFilter(visionNamespace);
 
     function fetchModules() {
       axios
@@ -153,16 +148,31 @@ const Modules = () => {
   };
 
   const getStatusColor = (module: any) => {
-    if (module.status === "unknown") {
+    // Prefer reconciliation status over general status
+    const status = module.reconciliationStatus?.status || module.status;
+
+    // Debug logging
+    console.log("Module data:", module.name, {
+      "module.status": module.status,
+      "module.reconciliationStatus": module.reconciliationStatus,
+      "resolved status": status,
+    });
+
+    if (status === "unknown") {
       return "#d3d3d3";
     }
 
-    if (module.status === "healthy") {
+    if (status === "healthy" || status === "succeeded") {
       return "#27D507";
     }
 
-    if (module.status === "progressing") {
+    // Starting/deploying modules should show yellow (progressing)
+    if (status === "progressing" || status === "unhealthy") {
       return "#ff8803";
+    }
+
+    if (status === "failed") {
+      return "#FF0000";
     }
 
     return "#FF0000";

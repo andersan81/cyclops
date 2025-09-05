@@ -519,19 +519,19 @@ const ResourceList = ({
     };
 
     const getStatusColor = (status: string, deleted: boolean) => {
-      if (status === "unhealthy") {
-        return "#FF0000";
-      }
-
       if (deleted) {
         return "#ff9f1a";
       }
 
-      if (status === "progressing") {
-        return "#ffcc00";
+      if (status === "unhealthy" || status === "progressing") {
+        return "#ff8803"; // Yellow for starting/progressing/unhealthy
       }
 
-      return "#27D507";
+      if (status === "failed") {
+        return "#FF0000"; // Red only for truly failed
+      }
+
+      return "#27D507"; // Green for healthy/succeeded
     };
 
     const handleManifestClick = (resource: any) => {

@@ -336,9 +336,11 @@ export const ModuleResourceDetails = ({
       return <Spin />;
     }
 
-    resources.forEach((resource: any) => {
+    resources.forEach((resource: any, index: number) => {
       resourcesToDelete.push(
-        <Row>
+        <Row
+          key={`${resource.kind}-${resource.namespace}-${resource.name}-${index}`}
+        >
           {resource.kind}: {resource.namespace} / {resource.name}
         </Row>,
       );

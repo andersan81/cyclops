@@ -191,7 +191,7 @@ export const CreateModuleComponent = ({
     setLoadingSubmitCreate(true);
 
     const moduleName = values["cyclops_module_name"];
-    const moduleNamespace = "vision"; // Force all modules to deploy to vision namespace
+    const moduleNamespace = "vision"; // Create Module CRD in vision namespace
 
     const gitopsWriteRepo = values["gitops-repo"];
     const gitopsWritePath = values["gitops-path"];
